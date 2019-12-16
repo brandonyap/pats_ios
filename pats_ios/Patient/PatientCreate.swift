@@ -8,16 +8,10 @@
 
 import SwiftUI
 
-struct SensorNames {
-    static let allSensors = [
-        1,
-        2,
-        3
-    ]
-}
-
 struct PatientCreate: View {
     @ObservedObject var store = PatientStore()
+    @EnvironmentObject var settings: SettingStore
+    @State private var id = 0
     @State private var sensors_id = 0
     @State private var first_name = ""
     @State private var last_name = ""
@@ -26,8 +20,8 @@ struct PatientCreate: View {
     @State private var physician = ""
     @State private var caretaker = ""
     @State private var comments = ""
-    
-    var sensors: [Sensor] = []
+    @State private var sensors: [Sensor] = []
+    @State private var showingAlert = false
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
             
@@ -42,8 +36,8 @@ struct PatientCreate: View {
             }
             Section(header: Text("Hospital Info")){
                 Picker("Sensor ID", selection: $sensors_id) {
-                    ForEach(SensorNames.allSensors, id: \.self) { sensor in
-                        Text(String(sensor)).tag(sensor)
+                    ForEach(sensors) { sensor in
+                        Text(String(sensor.id))
                     }
                 }
                 TextField("Hospital ID",
@@ -55,22 +49,114 @@ struct PatientCreate: View {
             }
             Section(header: Text("Comments")){
                 TextField("Comments",
-                    text: $comments).fixedSize(horizontal: false, vertical: true)
+                    text: $comments).fixedSize(horizontal: false, vertical: true).lineLimit(nil)
             }
         }
         .navigationBarTitle("Create Patient", displayMode: .inline)
         .navigationBarItems(trailing: Button(action: add) {
                 Text("Create")
             })
+        .alert(isPresented: $showingAlert) {
+                Alert(title: Text("Create Patient Failed"), message: Text("Bad Connection or Invalid Data"), dismissButton: .default(Text("Ok")))
+            }
+        .onAppear(perform: loadAllInactiveSensors)
     }
     
     func add() {
-        store.patients.append(createPatient())
-        self.presentationMode.wrappedValue.dismiss()
+        sendCreate()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+            if !self.showingAlert {
+                    self.presentationMode.wrappedValue.dismiss()
+            }
+        }
     }
     
     func createPatient() -> Patient {
-        return Patient(id: store.patients.count, sensors_id: sensors_id, first_name: first_name, last_name: last_name, birthday: birthday, hospital_id: Int(hospital_id) ?? 0, physician: physician, caretaker: caretaker, date_created: Date(), comments: comments, alert: false)
+        return Patient(id: store.patients.count, sensors_id: sensors_id, first_name: first_name, last_name: last_name, birthday: birthday, hospital_id: hospital_id, physician: physician, caretaker: caretaker, date_created: Date(), comments: comments, alert: false)
+    }
+    
+    func sendCreate() {
+        let url = URL(string: "http://" + settings.url_address + "/api/patients")!
+        var request = URLRequest(url: url)
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpMethod = "POST"
+        let parameters: [String: Any] = [
+            "sensors_id": sensors_id,
+            "first_name": first_name,
+            "last_name": last_name,
+            "birthday": dateToString(date: birthday),
+            "hospital_id": hospital_id,
+            "physician": physician,
+            "caretaker": caretaker,
+            "comments": comments
+        ]
+        do {
+            request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted) // pass dictionary to nsdata object and set it as request body
+        } catch let error {
+            print(error.localizedDescription)
+        }
+                
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if error != nil {
+                // OH NO! An error occurred...
+                self.showingAlert = true
+                return
+            }
+            
+            guard let httpResponse = response as? HTTPURLResponse,
+                  (200...299).contains(httpResponse.statusCode) else {
+                self.showingAlert = true
+                return
+            }
+            
+            if let data = data {
+                if let decodedResponse = try?
+                    JSONDecoder().decode(PatientCreateData.self, from: data) {
+                    if self.showingAlert {
+                        return
+                    }
+                    // we have good data – go back to the main thread
+                    DispatchQueue.main.async {
+                        // update our UI
+                        self.id = decodedResponse.id
+                    }
+                    // everything is good, so we can exit
+                    return
+                }
+            }
+        }.resume()
+    }
+    
+    func loadAllInactiveSensors() {
+        guard let url = URL(string: "http://" + settings.url_address + "/api/sensors/all?active=false") else {
+            print("Invalid URL")
+            return
+        }
+        print(url)
+        let request = URLRequest(url: url)
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if error != nil {
+                // OH NO! An error occurred...
+                return
+            }
+            
+            guard let httpResponse = response as? HTTPURLResponse,
+                  (200...299).contains(httpResponse.statusCode) else {
+                return
+            }
+            if let data = data {
+                if let decodedResponse = try?
+                    JSONDecoder().decode(SensorListResponse.self, from: data) {
+                    // we have good data – go back to the main thread
+                    DispatchQueue.main.async {
+                        // update our UI
+                        self.sensors = decodedResponse.data
+                    }
+                    // everything is good, so we can exit
+                    return
+                }
+            }
+        }.resume()
     }
 }
 

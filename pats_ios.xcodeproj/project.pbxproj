@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		EB162CE723A1DA0900B0FD57 /* Patient.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB162CE623A1DA0900B0FD57 /* Patient.swift */; };
+		EB162CE723A1DA0900B0FD57 /* PatientModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB162CE623A1DA0900B0FD57 /* PatientModel.swift */; };
 		EB162CE923A3108400B0FD57 /* PatientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB162CE823A3108400B0FD57 /* PatientCell.swift */; };
 		EB162CEC23A31ABE00B0FD57 /* PatientDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB162CEB23A31ABE00B0FD57 /* PatientDetail.swift */; };
 		EB162CEE23A3391500B0FD57 /* PatientStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB162CED23A3391500B0FD57 /* PatientStore.swift */; };
-		EBC76FA423A46FAA00835882 /* Sensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC76FA323A46FAA00835882 /* Sensor.swift */; };
+		EBC76FA423A46FAA00835882 /* SensorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC76FA323A46FAA00835882 /* SensorModel.swift */; };
 		EBC76FA723A471BD00835882 /* SensorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC76FA623A471BD00835882 /* SensorCell.swift */; };
 		EBC76FA923A4805400835882 /* SensorStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC76FA823A4805400835882 /* SensorStore.swift */; };
 		EBC76FAD23A4821600835882 /* SensorDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC76FAC23A4821600835882 /* SensorDetail.swift */; };
@@ -19,6 +19,9 @@
 		EBC76FB523A48D2200835882 /* SensorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC76FB423A48D2200835882 /* SensorView.swift */; };
 		EBC76FB723A48EC600835882 /* SensorCreate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC76FB623A48EC600835882 /* SensorCreate.swift */; };
 		EBC76FB923A4A85000835882 /* PatientCreate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC76FB823A4A85000835882 /* PatientCreate.swift */; };
+		EBC76FBB23A55A8100835882 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC76FBA23A55A8100835882 /* SettingView.swift */; };
+		EBC76FBD23A55AA900835882 /* SettingStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC76FBC23A55AA900835882 /* SettingStore.swift */; };
+		EBC76FCB23A6C65400835882 /* SensorUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC76FCA23A6C65400835882 /* SensorUpdate.swift */; };
 		EBE8178023A0AA9800A6F25C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE8177F23A0AA9800A6F25C /* AppDelegate.swift */; };
 		EBE8178223A0AA9800A6F25C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE8178123A0AA9800A6F25C /* SceneDelegate.swift */; };
 		EBE8178423A0AA9800A6F25C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE8178323A0AA9800A6F25C /* ContentView.swift */; };
@@ -28,11 +31,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		EB162CE623A1DA0900B0FD57 /* Patient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Patient.swift; sourceTree = "<group>"; };
+		EB162CE623A1DA0900B0FD57 /* PatientModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientModel.swift; sourceTree = "<group>"; };
 		EB162CE823A3108400B0FD57 /* PatientCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientCell.swift; sourceTree = "<group>"; };
 		EB162CEB23A31ABE00B0FD57 /* PatientDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientDetail.swift; sourceTree = "<group>"; };
 		EB162CED23A3391500B0FD57 /* PatientStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientStore.swift; sourceTree = "<group>"; };
-		EBC76FA323A46FAA00835882 /* Sensor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sensor.swift; sourceTree = "<group>"; };
+		EBC76FA323A46FAA00835882 /* SensorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorModel.swift; sourceTree = "<group>"; };
 		EBC76FA623A471BD00835882 /* SensorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorCell.swift; sourceTree = "<group>"; };
 		EBC76FA823A4805400835882 /* SensorStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorStore.swift; sourceTree = "<group>"; };
 		EBC76FAC23A4821600835882 /* SensorDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorDetail.swift; sourceTree = "<group>"; };
@@ -40,7 +43,10 @@
 		EBC76FB423A48D2200835882 /* SensorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorView.swift; sourceTree = "<group>"; };
 		EBC76FB623A48EC600835882 /* SensorCreate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorCreate.swift; sourceTree = "<group>"; };
 		EBC76FB823A4A85000835882 /* PatientCreate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientCreate.swift; sourceTree = "<group>"; };
-		EBE8177C23A0AA9800A6F25C /* Pats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pats.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EBC76FBA23A55A8100835882 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		EBC76FBC23A55AA900835882 /* SettingStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingStore.swift; sourceTree = "<group>"; };
+		EBC76FCA23A6C65400835882 /* SensorUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorUpdate.swift; sourceTree = "<group>"; };
+		EBE8177C23A0AA9800A6F25C /* iPats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iPats.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBE8177F23A0AA9800A6F25C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EBE8178123A0AA9800A6F25C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		EBE8178323A0AA9800A6F25C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -64,7 +70,7 @@
 		EBC76FA523A470DE00835882 /* Patient */ = {
 			isa = PBXGroup;
 			children = (
-				EB162CE623A1DA0900B0FD57 /* Patient.swift */,
+				EB162CE623A1DA0900B0FD57 /* PatientModel.swift */,
 				EB162CE823A3108400B0FD57 /* PatientCell.swift */,
 				EB162CEB23A31ABE00B0FD57 /* PatientDetail.swift */,
 				EB162CED23A3391500B0FD57 /* PatientStore.swift */,
@@ -77,14 +83,24 @@
 		EBC76FAB23A481F000835882 /* Sensor */ = {
 			isa = PBXGroup;
 			children = (
-				EBC76FA323A46FAA00835882 /* Sensor.swift */,
+				EBC76FA323A46FAA00835882 /* SensorModel.swift */,
 				EBC76FA623A471BD00835882 /* SensorCell.swift */,
 				EBC76FAC23A4821600835882 /* SensorDetail.swift */,
 				EBC76FA823A4805400835882 /* SensorStore.swift */,
 				EBC76FB423A48D2200835882 /* SensorView.swift */,
 				EBC76FB623A48EC600835882 /* SensorCreate.swift */,
+				EBC76FCA23A6C65400835882 /* SensorUpdate.swift */,
 			);
 			path = Sensor;
+			sourceTree = "<group>";
+		};
+		EBC76FBF23A55E3D00835882 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				EBC76FBA23A55A8100835882 /* SettingView.swift */,
+				EBC76FBC23A55AA900835882 /* SettingStore.swift */,
+			);
+			path = Setting;
 			sourceTree = "<group>";
 		};
 		EBE8177323A0AA9800A6F25C = {
@@ -98,7 +114,7 @@
 		EBE8177D23A0AA9800A6F25C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				EBE8177C23A0AA9800A6F25C /* Pats.app */,
+				EBE8177C23A0AA9800A6F25C /* iPats.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -109,6 +125,7 @@
 				EBE8177F23A0AA9800A6F25C /* AppDelegate.swift */,
 				EBE8178123A0AA9800A6F25C /* SceneDelegate.swift */,
 				EBE8178323A0AA9800A6F25C /* ContentView.swift */,
+				EBC76FBF23A55E3D00835882 /* Setting */,
 				EBC76FA523A470DE00835882 /* Patient */,
 				EBC76FAB23A481F000835882 /* Sensor */,
 				EBE8178523A0AA9C00A6F25C /* Assets.xcassets */,
@@ -144,7 +161,7 @@
 			);
 			name = pats_ios;
 			productName = pats_ios;
-			productReference = EBE8177C23A0AA9800A6F25C /* Pats.app */;
+			productReference = EBE8177C23A0AA9800A6F25C /* iPats.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -199,17 +216,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				EBE8178023A0AA9800A6F25C /* AppDelegate.swift in Sources */,
-				EBC76FA423A46FAA00835882 /* Sensor.swift in Sources */,
-				EB162CE723A1DA0900B0FD57 /* Patient.swift in Sources */,
+				EBC76FA423A46FAA00835882 /* SensorModel.swift in Sources */,
+				EB162CE723A1DA0900B0FD57 /* PatientModel.swift in Sources */,
 				EBC76FB923A4A85000835882 /* PatientCreate.swift in Sources */,
 				EBC76FB723A48EC600835882 /* SensorCreate.swift in Sources */,
+				EBC76FBB23A55A8100835882 /* SettingView.swift in Sources */,
 				EB162CE923A3108400B0FD57 /* PatientCell.swift in Sources */,
 				EBE8178223A0AA9800A6F25C /* SceneDelegate.swift in Sources */,
 				EBC76FB123A4845C00835882 /* PatientView.swift in Sources */,
+				EBC76FBD23A55AA900835882 /* SettingStore.swift in Sources */,
 				EBC76FA723A471BD00835882 /* SensorCell.swift in Sources */,
 				EB162CEE23A3391500B0FD57 /* PatientStore.swift in Sources */,
 				EBC76FA923A4805400835882 /* SensorStore.swift in Sources */,
 				EBC76FAD23A4821600835882 /* SensorDetail.swift in Sources */,
+				EBC76FCB23A6C65400835882 /* SensorUpdate.swift in Sources */,
 				EBC76FB523A48D2200835882 /* SensorView.swift in Sources */,
 				EB162CEC23A31ABE00B0FD57 /* PatientDetail.swift in Sources */,
 				EBE8178423A0AA9800A6F25C /* ContentView.swift in Sources */,
@@ -358,7 +378,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "brandon.pats-ios";
-				PRODUCT_NAME = Pats;
+				PRODUCT_NAME = iPats;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -378,7 +398,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "brandon.pats-ios";
-				PRODUCT_NAME = Pats;
+				PRODUCT_NAME = iPats;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

@@ -13,12 +13,16 @@ struct SensorCell: View {
     
     var body: some View {
         return NavigationLink(destination: SensorDetail(sensor: sensor)) {
-            VStack (alignment: .leading) {
-                Text(sensor.name)
-                HStack {
-                    Text("Bluetooth Address: " + sensor.bluetooth_address)
-                        .font(.subheadline)
-                        .foregroundColor(.secondary)
+            HStack {
+                Image(systemName: sensor.active ?  "checkmark.circle" : "pause.circle")
+                    .foregroundColor(sensor.active ? .green : .yellow)
+                VStack (alignment: .leading) {
+                    Text(sensor.name)
+                    HStack {
+                        Text("Bluetooth Address: " + sensor.bluetooth_address)
+                            .font(.subheadline)
+                            .foregroundColor(.secondary)
+                    }
                 }
             }
         }

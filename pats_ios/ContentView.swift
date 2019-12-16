@@ -18,6 +18,7 @@ struct ContentView: View {
     @State var list_type: ListType = .patient
     @ObservedObject var patient_store = PatientStore()
     @ObservedObject var sensor_store = SensorStore()
+    @EnvironmentObject var settings: SettingStore
     
     var body: some View {
         TabView {
@@ -43,14 +44,15 @@ struct ContentView: View {
                     Text("Beacons")
                 }
             }.tag(3)
-            Text("Settings").tabItem {
+            NavigationView {
+                SettingView()
+            }.tabItem {
                 VStack {
                     Image(systemName: "gear")
                     Text("Settings")
                 }
             }.tag(4)
         }
-        
     }
 }
 

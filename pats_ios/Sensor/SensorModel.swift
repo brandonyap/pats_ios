@@ -8,12 +8,26 @@
 
 import SwiftUI
 
-struct Sensor: Identifiable {
+struct Sensor: Codable, Identifiable {
     var id: Int
     var bluetooth_address: String
     var name: String
     var description: String
     var active: Bool = false
+}
+
+struct SensorId: Codable {
+    var id: Int
+}
+
+struct SensorResponse: Codable {
+    let success: Bool
+    let data: SensorId
+}
+
+struct SensorListResponse: Codable {
+    let success: Bool
+    let data: [Sensor]
 }
 
 #if DEBUG

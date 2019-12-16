@@ -10,27 +10,60 @@ import SwiftUI
 
 struct PatientView: View {
     @ObservedObject var store = PatientStore()
+    @EnvironmentObject var settings: SettingStore
+    @State private var showingAlert = false
     
     var body: some View {
         List {
             ForEach(store.patients) { patient in
                 PatientCell(patient: patient)
             }
-            .onDelete(perform: delete)
         }
         .navigationBarTitle(Text("Patients"))
-        .navigationBarItems(trailing:
-            Button(action: add)
+        .navigationBarItems(leading: Button(action: loadAll) {
+            Image(systemName: "arrow.clockwise")
+            }, trailing: NavigationLink(destination: PatientCreate(store: self.store))
             {
                 Image(systemName: "plus")
-        })
+            }).alert(isPresented: $showingAlert) {
+                Alert(title: Text("Patient Retrieval Failed"), message: Text("Bad Connection or Invalid URL"), dismissButton: .default(Text("Ok")))
+            }.onAppear(perform: loadAll)
     }
     
-    func add() {
-        store.patients.append(Patient(id: 4, sensors_id: 4, first_name: "Blah", last_name: "Blah", birthday: dateFormat(date: "2000-01-01"), hospital_id: 4, physician: "John Doe", caretaker: "Jane Doe", date_created: dateFormat(date: "2019-12-31"), comments: "No Comment", alert: false))
-    }
-    
-    func delete(at offsets: IndexSet) {
-        store.patients.remove(atOffsets: offsets)
+    func loadAll() {
+        guard let url = URL(string: "http://" + settings.url_address + "/api/patients/all") else {
+            print("Invalid URL")
+            return
+        }
+        print(url)
+        let request = URLRequest(url: url)
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if error != nil {
+                // OH NO! An error occurred...
+                self.showingAlert = true
+                return
+            }
+            
+            guard let httpResponse = response as? HTTPURLResponse,
+                  (200...299).contains(httpResponse.statusCode) else {
+                self.showingAlert = true
+                return
+            }
+            if let data = data {
+                if let decodedResponse = try?
+                    JSONDecoder().decode(PatientListResponse.self, from: data) {
+                    if self.showingAlert {
+                        return
+                    }
+                    // we have good data – go back to the main thread
+                    DispatchQueue.main.async {
+                        // update our UI
+                        self.store.patients = PatientCreateToPatient(patient_data: decodedResponse.data)
+                    }
+                    // everything is good, so we can exit
+                    return
+                }
+            }
+        }.resume()
     }
 }
