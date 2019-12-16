@@ -32,6 +32,11 @@ struct PatientListResponse: Codable {
     let data: [PatientCreateData]
 }
 
+struct PatientByIdResponse: Codable {
+    let success: Bool
+    let data: PatientCreateData
+}
+
 struct PatientCreateData: Codable, Identifiable {
     var sensors_id: Int
     var first_name: String

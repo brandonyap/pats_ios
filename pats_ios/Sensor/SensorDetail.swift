@@ -14,7 +14,7 @@ struct SensorDetail: View {
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
 
-    let sensor: Sensor
+    @State var sensor: Sensor
         
     var body: some View {
         Form {
@@ -57,7 +57,7 @@ struct SensorDetail: View {
             Text("Edit")
             }).alert(isPresented: $showingAlert) {
                             Alert(title: Text("Delete Sensor Failed"), message: Text("Bad Connection or Invalid URL"), dismissButton: .default(Text("Ok")))
-            }
+            }.onAppear(perform: load)
     }
     
     func delete() {
@@ -88,6 +88,43 @@ struct SensorDetail: View {
                   (200...299).contains(httpResponse.statusCode) else {
                 self.showingAlert = true
                 return
+            }
+        }.resume()
+    }
+    
+    func load() {
+        guard let url = URL(string: "http://" + settings.url_address + "/api/sensors/" + String(sensor.id)) else {
+            print("Invalid URL")
+            return
+        }
+        print(url)
+        let request = URLRequest(url: url)
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if error != nil {
+                // OH NO! An error occurred...
+                self.showingAlert = true
+                return
+            }
+            
+            guard let httpResponse = response as? HTTPURLResponse,
+                  (200...299).contains(httpResponse.statusCode) else {
+                self.showingAlert = true
+                return
+            }
+            if let data = data {
+                if let decodedResponse = try?
+                    JSONDecoder().decode(SensorByIdResponse.self, from: data) {
+                    if self.showingAlert {
+                        return
+                    }
+                    // we have good data – go back to the main thread
+                    DispatchQueue.main.async {
+                        // update our UI
+                        self.sensor = decodedResponse.data
+                    }
+                    // everything is good, so we can exit
+                    return
+                }
             }
         }.resume()
     }

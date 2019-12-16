@@ -30,6 +30,11 @@ struct SensorListResponse: Codable {
     let data: [Sensor]
 }
 
+struct SensorByIdResponse: Codable {
+    let success: Bool
+    let data: Sensor
+}
+
 #if DEBUG
 let sensorTestData = [
     Sensor(id: 1, bluetooth_address: "11:22:33:44:55:66", name: "Sensor 1", description: "Blah"),

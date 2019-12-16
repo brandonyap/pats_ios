@@ -22,6 +22,7 @@
 		EBC76FBB23A55A8100835882 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC76FBA23A55A8100835882 /* SettingView.swift */; };
 		EBC76FBD23A55AA900835882 /* SettingStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC76FBC23A55AA900835882 /* SettingStore.swift */; };
 		EBC76FCB23A6C65400835882 /* SensorUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC76FCA23A6C65400835882 /* SensorUpdate.swift */; };
+		EBC76FCD23A7505800835882 /* PatientUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC76FCC23A7505800835882 /* PatientUpdate.swift */; };
 		EBE8178023A0AA9800A6F25C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE8177F23A0AA9800A6F25C /* AppDelegate.swift */; };
 		EBE8178223A0AA9800A6F25C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE8178123A0AA9800A6F25C /* SceneDelegate.swift */; };
 		EBE8178423A0AA9800A6F25C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE8178323A0AA9800A6F25C /* ContentView.swift */; };
@@ -46,6 +47,7 @@
 		EBC76FBA23A55A8100835882 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		EBC76FBC23A55AA900835882 /* SettingStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingStore.swift; sourceTree = "<group>"; };
 		EBC76FCA23A6C65400835882 /* SensorUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorUpdate.swift; sourceTree = "<group>"; };
+		EBC76FCC23A7505800835882 /* PatientUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientUpdate.swift; sourceTree = "<group>"; };
 		EBE8177C23A0AA9800A6F25C /* iPats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iPats.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBE8177F23A0AA9800A6F25C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EBE8178123A0AA9800A6F25C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 				EB162CED23A3391500B0FD57 /* PatientStore.swift */,
 				EBC76FB023A4845C00835882 /* PatientView.swift */,
 				EBC76FB823A4A85000835882 /* PatientCreate.swift */,
+				EBC76FCC23A7505800835882 /* PatientUpdate.swift */,
 			);
 			path = Patient;
 			sourceTree = "<group>";
@@ -222,6 +225,7 @@
 				EBC76FB723A48EC600835882 /* SensorCreate.swift in Sources */,
 				EBC76FBB23A55A8100835882 /* SettingView.swift in Sources */,
 				EB162CE923A3108400B0FD57 /* PatientCell.swift in Sources */,
+				EBC76FCD23A7505800835882 /* PatientUpdate.swift in Sources */,
 				EBE8178223A0AA9800A6F25C /* SceneDelegate.swift in Sources */,
 				EBC76FB123A4845C00835882 /* PatientView.swift in Sources */,
 				EBC76FBD23A55AA900835882 /* SettingStore.swift in Sources */,

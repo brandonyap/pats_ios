@@ -48,7 +48,59 @@ struct SensorUpdate: View {
     }
     
     func update() {
-        
+        sendUpdate()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+            if !self.showingAlert {
+                self.presentationMode.wrappedValue.dismiss()
+            }
+        }
+    }
+    
+    func sendUpdate() {
+        let url = URL(string: "http://" + settings.url_address + "/api/sensors/" + String(id))!
+        var request = URLRequest(url: url)
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpMethod = "PUT"
+        let parameters: [String: Any] = [
+            "bluetooth_address": bluetooth_address,
+            "name": name,
+            "description": description
+        ]
+        do {
+            request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted) // pass dictionary to nsdata object and set it as request body
+        } catch let error {
+            print(error.localizedDescription)
+        }
+                
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if error != nil {
+                // OH NO! An error occurred...
+                self.showingAlert = true
+                return
+            }
+            
+            guard let httpResponse = response as? HTTPURLResponse,
+                  (200...299).contains(httpResponse.statusCode) else {
+                self.showingAlert = true
+                return
+            }
+            
+            if let data = data {
+                if let decodedResponse = try?
+                    JSONDecoder().decode(SensorId.self, from: data) {
+                    if self.showingAlert {
+                        return
+                    }
+                    // we have good data – go back to the main thread
+                    DispatchQueue.main.async {
+                        // update our UI
+                        self.id = decodedResponse.id
+                    }
+                    // everything is good, so we can exit
+                    return
+                }
+            }
+        }.resume()
     }
     
     func setDefaultValues() {
