@@ -11,6 +11,7 @@ import SwiftUI
 struct SensorDetail: View {
     @EnvironmentObject var settings: SettingStore
     @State private var showingAlert = false
+    @State private var showActionSheet = false
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
 
@@ -48,7 +49,7 @@ struct SensorDetail: View {
                     Text(sensor.active ? "Yes" : "No")
                 }
             }
-            Button(action: delete) {
+            Button(action: deleteMessage) {
                 Text("Delete Sensor").foregroundColor(.red)
             }
         }
@@ -57,7 +58,22 @@ struct SensorDetail: View {
             Text("Edit")
             }).alert(isPresented: $showingAlert) {
                             Alert(title: Text("Delete Sensor Failed"), message: Text("Bad Connection or Invalid URL"), dismissButton: .default(Text("Ok")))
-            }.onAppear(perform: load)
+            }.onAppear(perform: load).actionSheet(isPresented: $showActionSheet) {
+                ActionSheet(
+                    title: Text("Delete Sensor"),
+                    message: Text("Are you sure you would like to delete this sensor?"),
+                    buttons: [
+                        .destructive(Text("Delete"), action: {
+                            self.delete()
+                        }),
+                        .cancel { }
+                    ]
+                )
+            }
+    }
+    
+    func deleteMessage() {
+        showActionSheet = true
     }
     
     func delete() {

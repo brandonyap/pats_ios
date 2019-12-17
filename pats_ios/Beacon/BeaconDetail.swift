@@ -1,93 +1,68 @@
 //
-//  PatientDetail.swift
+//  BeaconDetail.swift
 //  pats_ios
 //
-//  Created by Brandon Yap on 2019-12-12.
+//  Created by Brandon Yap on 2019-12-16.
 //  Copyright © 2019 Brandon Yap. All rights reserved.
 //
 
 import SwiftUI
 
-struct PatientDetail: View {
+struct BeaconDetail: View {
     @EnvironmentObject var settings: SettingStore
     @State private var showingAlert = false
     @State private var showActionSheet = false
-
-    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
-    @State var patient: Patient
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+
+    @State var beacon: Beacon
         
     var body: some View {
         Form {
-            Section(header: Text("Patient Info")){
+            Section(header: Text("Beacon Info")){
                 HStack {
-                    Text("First Name")
+                    Text("Beacon ID")
                     Spacer()
-                    Text(patient.first_name)
+                    Text(String(beacon.id))
                 }
                 HStack {
-                    Text("Last Name")
+                    Text("Name")
                     Spacer()
-                    Text(patient.last_name)
+                    Text(beacon.name)
                 }
                 HStack {
-                    Text("Birthday")
+                    Text("Description")
                     Spacer()
-                    Text(dateToString(date: patient.birthday))
-                }
-            }
-            Section(header: Text("Hospital Info")){
-                HStack {
-                    Text("Sensors ID")
-                    Spacer()
-                    Text(String(patient.sensors_id))
+                    Text(beacon.description)
+                        .lineLimit(nil)
                 }
                 HStack {
-                    Text("Hospital ID")
+                    Text("Bluetooth Address")
                     Spacer()
-                    Text(patient.hospital_id)
+                    Text(beacon.bluetooth_address)
                 }
-                HStack {
-                    Text("Date Created")
-                    Spacer()
-                    Text(dateToString(date: patient.date_created))
-                }
-                HStack {
-                    Text("Physician")
-                    Spacer()
-                    Text(patient.physician)
-                }
-                HStack {
-                    Text("Caretaker")
-                    Spacer()
-                    Text(patient.caretaker)
-                }
-            }
-            Section(header: Text("Comments")){
-                Text(patient.comments)
-                    .lineLimit(nil)
             }
             Button(action: deleteMessage) {
-                Text("Delete Patient").foregroundColor(.red)
+                Text("Delete Beacon").foregroundColor(.red)
             }
         }
-        .navigationBarTitle("Patient Details", displayMode: .inline)
-        .navigationBarItems(trailing: NavigationLink(destination: PatientUpdate(patient: self.patient)) {
-                Text("Edit")
+        .navigationBarTitle("Beacon Details", displayMode: .inline)
+        .navigationBarItems(trailing: NavigationLink(destination: BeaconUpdate(beacon: self.beacon)) {
+            Text("Edit")
             }).alert(isPresented: $showingAlert) {
-                        Alert(title: Text("Delete Patient Failed"), message: Text("Bad Connection or Invalid URL"), dismissButton: .default(Text("Ok")))
-        }.onAppear(perform: load).actionSheet(isPresented: $showActionSheet) {
-            ActionSheet(
-                title: Text("Delete Patient"),
-                message: Text("Are you sure you would like to delete this patient?"),
-                buttons: [
-                    .destructive(Text("Delete"), action: {
-                        self.delete()
-                    }),
-                    .cancel { }
-                ]
-            )
-        }
+                            Alert(title: Text("Delete Beacon Failed"), message: Text("Bad Connection or Invalid URL"), dismissButton: .default(Text("Ok")))
+            }.onAppear(perform: load).actionSheet(isPresented: $showActionSheet) {
+                ActionSheet(
+                    title: Text("Delete Beacon"),
+                    message: Text("Are you sure you would like to delete this beacon?"),
+                    buttons: [
+                        .destructive(Text("Delete"), action: {
+                            self.delete()
+                        }),
+                        .cancel { }
+                    ]
+                )
+            }
     }
     
     func deleteMessage() {
@@ -104,7 +79,7 @@ struct PatientDetail: View {
     }
     
     func sendDelete() {
-        guard let url = URL(string: "http://" + settings.url_address + "/api/patients/" + String(patient.id)) else {
+        guard let url = URL(string: "http://" + settings.url_address + "/api/beacons/" + String(beacon.id)) else {
             print("Invalid URL")
             return
         }
@@ -127,7 +102,7 @@ struct PatientDetail: View {
     }
     
     func load() {
-        guard let url = URL(string: "http://" + settings.url_address + "/api/patients/" + String(patient.id)) else {
+        guard let url = URL(string: "http://" + settings.url_address + "/api/beacons/" + String(beacon.id)) else {
             print("Invalid URL")
             return
         }
@@ -147,14 +122,14 @@ struct PatientDetail: View {
             }
             if let data = data {
                 if let decodedResponse = try?
-                    JSONDecoder().decode(PatientByIdResponse.self, from: data) {
+                    JSONDecoder().decode(BeaconByIdResponse.self, from: data) {
                     if self.showingAlert {
                         return
                     }
                     // we have good data – go back to the main thread
                     DispatchQueue.main.async {
                         // update our UI
-                        self.patient = createPatient(data: decodedResponse.data)
+                        self.beacon = decodedResponse.data
                     }
                     // everything is good, so we can exit
                     return
@@ -165,9 +140,9 @@ struct PatientDetail: View {
 }
 
 #if DEBUG
-struct PatientDetail_Previews: PreviewProvider {
+struct BeaconDetail_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationView { PatientDetail(patient: patientTestData[2]) }
+        NavigationView { BeaconDetail(beacon: beaconTestData[0]) }
     }
 }
 #endif

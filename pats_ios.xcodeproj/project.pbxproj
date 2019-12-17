@@ -23,6 +23,13 @@
 		EBC76FBD23A55AA900835882 /* SettingStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC76FBC23A55AA900835882 /* SettingStore.swift */; };
 		EBC76FCB23A6C65400835882 /* SensorUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC76FCA23A6C65400835882 /* SensorUpdate.swift */; };
 		EBC76FCD23A7505800835882 /* PatientUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC76FCC23A7505800835882 /* PatientUpdate.swift */; };
+		EBC76FCF23A896A100835882 /* BeaconModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC76FCE23A896A100835882 /* BeaconModel.swift */; };
+		EBC76FD223A896F600835882 /* BeaconCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC76FD123A896F600835882 /* BeaconCell.swift */; };
+		EBC76FD423A8974100835882 /* BeaconDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC76FD323A8974100835882 /* BeaconDetail.swift */; };
+		EBC76FD623A897C500835882 /* BeaconStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC76FD523A897C500835882 /* BeaconStore.swift */; };
+		EBC76FD823A897E600835882 /* BeaconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC76FD723A897E600835882 /* BeaconView.swift */; };
+		EBC76FDA23A8984200835882 /* BeaconCreate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC76FD923A8984200835882 /* BeaconCreate.swift */; };
+		EBC76FDC23A898BC00835882 /* BeaconUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC76FDB23A898BC00835882 /* BeaconUpdate.swift */; };
 		EBE8178023A0AA9800A6F25C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE8177F23A0AA9800A6F25C /* AppDelegate.swift */; };
 		EBE8178223A0AA9800A6F25C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE8178123A0AA9800A6F25C /* SceneDelegate.swift */; };
 		EBE8178423A0AA9800A6F25C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE8178323A0AA9800A6F25C /* ContentView.swift */; };
@@ -48,6 +55,13 @@
 		EBC76FBC23A55AA900835882 /* SettingStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingStore.swift; sourceTree = "<group>"; };
 		EBC76FCA23A6C65400835882 /* SensorUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorUpdate.swift; sourceTree = "<group>"; };
 		EBC76FCC23A7505800835882 /* PatientUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientUpdate.swift; sourceTree = "<group>"; };
+		EBC76FCE23A896A100835882 /* BeaconModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconModel.swift; sourceTree = "<group>"; };
+		EBC76FD123A896F600835882 /* BeaconCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconCell.swift; sourceTree = "<group>"; };
+		EBC76FD323A8974100835882 /* BeaconDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconDetail.swift; sourceTree = "<group>"; };
+		EBC76FD523A897C500835882 /* BeaconStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconStore.swift; sourceTree = "<group>"; };
+		EBC76FD723A897E600835882 /* BeaconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconView.swift; sourceTree = "<group>"; };
+		EBC76FD923A8984200835882 /* BeaconCreate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconCreate.swift; sourceTree = "<group>"; };
+		EBC76FDB23A898BC00835882 /* BeaconUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconUpdate.swift; sourceTree = "<group>"; };
 		EBE8177C23A0AA9800A6F25C /* iPats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iPats.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBE8177F23A0AA9800A6F25C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EBE8178123A0AA9800A6F25C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -106,6 +120,20 @@
 			path = Setting;
 			sourceTree = "<group>";
 		};
+		EBC76FD023A896B000835882 /* Beacon */ = {
+			isa = PBXGroup;
+			children = (
+				EBC76FCE23A896A100835882 /* BeaconModel.swift */,
+				EBC76FD123A896F600835882 /* BeaconCell.swift */,
+				EBC76FD323A8974100835882 /* BeaconDetail.swift */,
+				EBC76FD523A897C500835882 /* BeaconStore.swift */,
+				EBC76FD723A897E600835882 /* BeaconView.swift */,
+				EBC76FD923A8984200835882 /* BeaconCreate.swift */,
+				EBC76FDB23A898BC00835882 /* BeaconUpdate.swift */,
+			);
+			path = Beacon;
+			sourceTree = "<group>";
+		};
 		EBE8177323A0AA9800A6F25C = {
 			isa = PBXGroup;
 			children = (
@@ -128,6 +156,7 @@
 				EBE8177F23A0AA9800A6F25C /* AppDelegate.swift */,
 				EBE8178123A0AA9800A6F25C /* SceneDelegate.swift */,
 				EBE8178323A0AA9800A6F25C /* ContentView.swift */,
+				EBC76FD023A896B000835882 /* Beacon */,
 				EBC76FBF23A55E3D00835882 /* Setting */,
 				EBC76FA523A470DE00835882 /* Patient */,
 				EBC76FAB23A481F000835882 /* Sensor */,
@@ -219,20 +248,27 @@
 			buildActionMask = 2147483647;
 			files = (
 				EBE8178023A0AA9800A6F25C /* AppDelegate.swift in Sources */,
+				EBC76FCF23A896A100835882 /* BeaconModel.swift in Sources */,
+				EBC76FDC23A898BC00835882 /* BeaconUpdate.swift in Sources */,
 				EBC76FA423A46FAA00835882 /* SensorModel.swift in Sources */,
 				EB162CE723A1DA0900B0FD57 /* PatientModel.swift in Sources */,
 				EBC76FB923A4A85000835882 /* PatientCreate.swift in Sources */,
 				EBC76FB723A48EC600835882 /* SensorCreate.swift in Sources */,
+				EBC76FD823A897E600835882 /* BeaconView.swift in Sources */,
+				EBC76FD223A896F600835882 /* BeaconCell.swift in Sources */,
 				EBC76FBB23A55A8100835882 /* SettingView.swift in Sources */,
 				EB162CE923A3108400B0FD57 /* PatientCell.swift in Sources */,
 				EBC76FCD23A7505800835882 /* PatientUpdate.swift in Sources */,
+				EBC76FD423A8974100835882 /* BeaconDetail.swift in Sources */,
 				EBE8178223A0AA9800A6F25C /* SceneDelegate.swift in Sources */,
 				EBC76FB123A4845C00835882 /* PatientView.swift in Sources */,
 				EBC76FBD23A55AA900835882 /* SettingStore.swift in Sources */,
+				EBC76FDA23A8984200835882 /* BeaconCreate.swift in Sources */,
 				EBC76FA723A471BD00835882 /* SensorCell.swift in Sources */,
 				EB162CEE23A3391500B0FD57 /* PatientStore.swift in Sources */,
 				EBC76FA923A4805400835882 /* SensorStore.swift in Sources */,
 				EBC76FAD23A4821600835882 /* SensorDetail.swift in Sources */,
+				EBC76FD623A897C500835882 /* BeaconStore.swift in Sources */,
 				EBC76FCB23A6C65400835882 /* SensorUpdate.swift in Sources */,
 				EBC76FB523A48D2200835882 /* SensorView.swift in Sources */,
 				EB162CEC23A31ABE00B0FD57 /* PatientDetail.swift in Sources */,
