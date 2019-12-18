@@ -15,12 +15,16 @@ struct SettingView: View {
     var body: some View {
         Form {
             Section(header: Text("Host URL & Port")) {
-                TextField(settings.url_address, text: $url_address)
+                TextField("Example: 0.0.0.0:7000", text: $url_address)
             }
         }.navigationBarTitle(Text("Settings"))
             .navigationBarItems(trailing: Button(action: save) {
                 Text("Save")
-            })
+            }).onAppear(perform: load)
+    }
+    
+    func load() {
+        url_address = settings.url_address
     }
     
     func save() {
