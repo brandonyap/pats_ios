@@ -10,7 +10,7 @@ import SwiftUI
 
 struct Beacon: Codable, Identifiable {
     var id: Int
-    var bluetooth_address: String
+    var uuid: String
     var name: String
     var description: String
 }
@@ -36,7 +36,7 @@ struct BeaconByIdResponse: Codable {
 
 #if DEBUG
 let beaconTestData = [
-    Beacon(id: 1, bluetooth_address: "11:22:33:44:55:66", name: "Sensor 1", description: "Blah"),
-    Beacon(id: 2, bluetooth_address: "12:34:56:78:90:12", name: "Sensor 2", description: "Blah Blah")
+    Beacon(id: 1, uuid: "12345678abcdefgh12345678abcdefgh", name: "Sensor 1", description: "Blah"),
+    Beacon(id: 2, uuid: "abcdefgh12345678abcdefgh12345678", name: "Sensor 2", description: "Blah Blah")
 ]
 #endif

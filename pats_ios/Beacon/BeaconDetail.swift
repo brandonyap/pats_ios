@@ -37,9 +37,9 @@ struct BeaconDetail: View {
                         .lineLimit(nil)
                 }
                 HStack {
-                    Text("Bluetooth Address")
+                    Text("UUID")
                     Spacer()
-                    Text(beacon.bluetooth_address)
+                    Text(beacon.uuid)
                 }
             }
             Button(action: deleteMessage) {

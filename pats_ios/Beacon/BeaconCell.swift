@@ -17,7 +17,7 @@ struct BeaconCell: View {
                 VStack (alignment: .leading) {
                     Text(beacon.name)
                     HStack {
-                        Text("Bluetooth Address: " + beacon.bluetooth_address)
+                        Text("UUID: " + beacon.uuid)
                             .font(.subheadline)
                             .foregroundColor(.secondary)
                     }

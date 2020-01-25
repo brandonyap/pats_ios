@@ -12,7 +12,7 @@ struct BeaconUpdate: View {
     let beacon: Beacon
     @ObservedObject var store = BeaconStore()
     @EnvironmentObject var settings: SettingStore
-    @State private var bluetooth_address = ""
+    @State private var uuid = ""
     @State private var name = ""
     @State private var description = ""
     @State private var id: Int = 0
@@ -22,8 +22,8 @@ struct BeaconUpdate: View {
             
     var body: some View {
         Form {
-            Section(header: Text("Bluetooth Address")) {
-                TextField("Bluetooth Address", text: $bluetooth_address)
+            Section(header: Text("UUID")) {
+                TextField("UUID", text: $uuid)
             }
             Section(header: Text("Name")) {
                 TextField("Name", text: $name)
@@ -62,7 +62,7 @@ struct BeaconUpdate: View {
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpMethod = "PUT"
         let parameters: [String: Any] = [
-            "bluetooth_address": bluetooth_address,
+            "uuid": uuid,
             "name": name,
             "description": description
         ]
@@ -104,7 +104,7 @@ struct BeaconUpdate: View {
     }
     
     func setDefaultValues() {
-        bluetooth_address = beacon.bluetooth_address
+        uuid = beacon.uuid
         name = beacon.name
         id = beacon.id
         description = beacon.description

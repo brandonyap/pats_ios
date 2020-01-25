@@ -11,7 +11,7 @@ import SwiftUI
 struct BeaconCreate: View {
     @ObservedObject var store = BeaconStore()
     @EnvironmentObject var settings: SettingStore
-    @State private var bluetooth_address = ""
+    @State private var uuid = ""
     @State private var name = ""
     @State private var description = ""
     @State private var id: Int = 0
@@ -21,7 +21,7 @@ struct BeaconCreate: View {
             
     var body: some View {
         Form {
-            TextField("Bluetooth Address", text: $bluetooth_address)
+            TextField("UUID", text: $uuid)
             TextField("Name", text: $name)
             TextField("Description", text: $description)
                 .lineLimit(nil)
@@ -49,7 +49,7 @@ struct BeaconCreate: View {
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpMethod = "POST"
         let parameters: [String: Any] = [
-            "bluetooth_address": bluetooth_address,
+            "uuid": uuid,
             "name": name,
             "description": description
         ]
@@ -91,7 +91,7 @@ struct BeaconCreate: View {
     }
     
     func createBeacon() -> Beacon {
-        return Beacon(id: id, bluetooth_address: bluetooth_address, name: name, description: description)
+        return Beacon(id: id, uuid: uuid, name: name, description: description)
     }
 }
 
