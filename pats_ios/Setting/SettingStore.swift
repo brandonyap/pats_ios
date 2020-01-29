@@ -12,7 +12,7 @@ import Combine
 class SettingStore : ObservableObject {
     @Published var url_address: String
     
-    init (url_address: String = "192.168.0.36:8888") {
-        self.url_address = url_address
+    init () {
+        self.url_address = UserDefaults.standard.string(forKey: "address") ?? "192.168.0.36:8888"
     }
 }

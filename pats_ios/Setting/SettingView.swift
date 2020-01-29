@@ -29,6 +29,7 @@ struct SettingView: View {
     
     func save() {
         settings.url_address = url_address
+        UserDefaults.standard.set(settings.url_address, forKey: "address")
         print("Saved URL Address: " + settings.url_address)
     }
 }
