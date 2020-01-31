@@ -62,7 +62,7 @@
 		EBC76FD723A897E600835882 /* BeaconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconView.swift; sourceTree = "<group>"; };
 		EBC76FD923A8984200835882 /* BeaconCreate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconCreate.swift; sourceTree = "<group>"; };
 		EBC76FDB23A898BC00835882 /* BeaconUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconUpdate.swift; sourceTree = "<group>"; };
-		EBE8177C23A0AA9800A6F25C /* iPats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iPats.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EBE8177C23A0AA9800A6F25C /* iPats Manager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iPats Manager.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBE8177F23A0AA9800A6F25C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EBE8178123A0AA9800A6F25C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		EBE8178323A0AA9800A6F25C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -145,7 +145,7 @@
 		EBE8177D23A0AA9800A6F25C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				EBE8177C23A0AA9800A6F25C /* iPats.app */,
+				EBE8177C23A0AA9800A6F25C /* iPats Manager.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -193,7 +193,7 @@
 			);
 			name = pats_ios;
 			productName = pats_ios;
-			productReference = EBE8177C23A0AA9800A6F25C /* iPats.app */;
+			productReference = EBE8177C23A0AA9800A6F25C /* iPats Manager.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -418,7 +418,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "brandon.pats-ios";
-				PRODUCT_NAME = iPats;
+				PRODUCT_NAME = "iPats Manager";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -438,7 +438,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "brandon.pats-ios";
-				PRODUCT_NAME = iPats;
+				PRODUCT_NAME = "iPats Manager";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
