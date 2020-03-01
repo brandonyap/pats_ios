@@ -48,13 +48,21 @@ struct ContentView: View {
                 }
             }.tag(3)
             NavigationView {
+                BeaconGroupView()
+            }.tabItem {
+                VStack {
+                    Image(systemName: "map")
+                    Text("Beacon Groups")
+                }
+            }.tag(4)
+            NavigationView {
                 SettingView()
             }.tabItem {
                 VStack {
                     Image(systemName: "gear")
                     Text("Settings")
                 }
-            }.tag(4)
+            }.tag(5)
         }
     }
 }
