@@ -3,6 +3,7 @@ The Patients with Alzeimers Tracking System was developed for our final design c
 
 ## Associated Respositories
 - https://github.com/brandonyap/pats_api
+- https://github.com/brandonyap/pats_ios_tracker
 
 # pats_ios
 `pats_ios` is the iPats Manager app for managing sensors, beacons, patients, and beacon locations. It runs on iOS 13+ and utilizes the new SwiftUI libraries. 
